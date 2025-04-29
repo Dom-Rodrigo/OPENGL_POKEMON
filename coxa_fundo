@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+              "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="6.59722in" height="6.59722in"
+     viewBox="0 0 475 475">
+  <path id="coxa_fundo"
+        fill="none" stroke="black" stroke-width="1"
+        d="M 255.86,313.21
+           C 255.86,313.21 290.98,279.27 290.98,279.27
+             290.98,279.27 317.26,319.24 317.26,319.24
+             317.26,319.24 306.55,361.73 306.55,361.73
+             306.55,361.73 272.73,359.47 272.73,359.47" />
+</svg>

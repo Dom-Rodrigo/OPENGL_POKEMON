@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+              "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="6.59722in" height="6.59722in"
+     viewBox="0 0 475 475">
+  <path id="perna_frente_direita"
+        fill="none" stroke="black" stroke-width="1"
+        d="M 141.80,425.72
+           C 141.80,425.72 166.31,286.58 166.31,286.58
+             166.31,286.58 143.94,269.20 143.94,269.20
+             143.94,269.20 120.13,294.95 120.13,294.95
+             120.13,294.95 120.56,415.26 120.56,415.26" />
+</svg>

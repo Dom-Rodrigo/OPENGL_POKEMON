@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+              "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="6.59722in" height="6.59722in"
+     viewBox="0 0 475 475">
+  <path id="canela_traseira_fora"
+        fill="none" stroke="black" stroke-width="1"
+        d="M 324.17,417.55
+           C 324.17,417.55 341.32,384.91 341.32,384.91
+             341.32,384.91 369.68,383.11 369.68,383.11
+             369.68,383.11 369.75,390.95 369.75,390.95
+             369.75,390.95 347.44,431.16 347.44,431.16" />
+</svg>

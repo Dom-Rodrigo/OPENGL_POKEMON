@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+              "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="6.59722in" height="6.59722in"
+     viewBox="0 0 475 475">
+  <path id="joelho_traseiro_fora"
+        fill="none" stroke="black" stroke-width="1"
+        d="M 313.07,365.05
+           C 313.07,365.05 349.69,350.92 349.69,350.92
+             349.69,350.92 370.19,382.81 370.19,382.81
+             370.19,382.81 341.50,385.88 341.50,385.88" />
+</svg>
