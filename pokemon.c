@@ -47,7 +47,10 @@ float raio = 20.5f;           // Raio do trajeto circular
 float speed = 0.05f;  
 float dx_juba = 0;
 float dy_juba = 0;
+float dx_asa_dentro = 0;
+float dy_asa_dentro = 0;
 float raio_juba = 30.5f;
+float raio_asa_dentro = 50.0f;
 
 
 void update(int value) {
@@ -58,6 +61,8 @@ void update(int value) {
     dy = raio * sin(angle);
     dx_juba = raio_juba * cos(angle);
     dy_juba = raio_juba * sin(angle);
+    dx_asa_dentro = raio_asa_dentro * cos(angle);
+    dy_asa_dentro = raio_asa_dentro * sin(angle);
 
     glutPostRedisplay();
     glutTimerFunc(16, update, 0); // ~60 FPS
@@ -783,6 +788,7 @@ void display(void){
   glTranslatef(219.58+dx, 218.43+dy, 0); 
   glScalef(scale, scale, 1.0f);
   glTranslatef(-219.58+dx, -218.43+dy, 0); // Ajusta a escala pro centro do pokemon 
+  asa_dentro(dx_asa_dentro, dy_asa_dentro);
   corpo(dx, dy);
   coxa_fundo(dx, dy);
   canela_fundo(dx, dy);
@@ -796,9 +802,8 @@ void display(void){
   perna_frente_esquerda(dx, dy);
   perna_frente_direita(dx, dy);
   orelha_dentro(dx, dy);
-  asa_dentro(dx, dy);
   orelha_fora(dx, dy);
-  asa_fora(dx, dy);
+  asa_fora(dx_juba, dy_juba);
   juba(dx_juba, dy_juba);
   juba_cinza(dx_juba, dy_juba);
   cabeca(dx, dy);
