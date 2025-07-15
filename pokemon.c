@@ -75,7 +75,7 @@ int main(int argc, char** argv){
   glutInitWindowPosition (0, 0); //Posição inicial do canto superior esquerdo da janela a ser criada
   glutCreateWindow (argv[0]); //Cria uma nova janela com valor de retorno (não usado)
   // que a identifica, caso tenha mais de uma
-  glClearColor(0, 0, 1, 0.0); //selecionar cor de fundo (Branco)
+  glClearColor(0, 1, 0, 0.0); //selecionar cor de fundo (Branco)
   glOrtho (0, 475, 475, 0, 0, 1); //define as coordenadas do volume de recorte (clipping volume),
   glutDisplayFunc(display); //Função callback chamada para fazer o desenho
   glutTimerFunc(0, update, 0); // Começa a animação
@@ -769,7 +769,25 @@ void juba_cinza(GLfloat dx, GLfloat dy){
   glEnd();
 
 }
+void fundo_tela(){
+  glColor3ub(69, 46, 6);
+  glBegin(GL_POLYGON);
+  glVertex2f(0.0f, 475.0f);
+  glVertex2f(237.5-20, 237.5);
+  glVertex2f(237.5+20, 237.5);
+  glVertex2f(475.0f, 475.0f);
+  glEnd();
+}
 
+void fundo_ceu(){
+  glColor3ub(158, 191, 217);
+  glBegin(GL_POLYGON);
+  glVertex2f(0.0f, 475.0f/2);
+  glVertex2f(475.0f, 475.0f/2);
+  glVertex2f(475.0f, 0.0f);
+  glVertex2f(0.0f, 0.0f);
+  glEnd();
+}
 float scale = 1.0f; // Current zoom level
 
 void display(void){
@@ -783,7 +801,8 @@ void display(void){
   //glBegin(GL_TRIANGLES);
   //glBegin(GL_TRIANGLE_STRIP);
   //glBegin(GL_TRIANGLE_FAN);
-
+  fundo_tela();
+  fundo_ceu();
   glPushMatrix();
   glTranslatef(219.58+dx, 218.43+dy, 0); 
   glScalef(scale, scale, 1.0f);
