@@ -1,6 +1,7 @@
 #include <GL/glut.h> //O arquivo glut.h inclui, além dos protótipos das funções GLUT, os arquivos gl.h e glu.h,
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 int R = 255, G=255, B = 255;
 GLfloat dx=0, dy=0.0;
@@ -41,6 +42,27 @@ void TeclasEspeciais(int tecla, int x, int y){
      //que a janela corrente seja redesenhada
 }
 
+float angle = 0.0f;            // ANgulo em radianos
+float raio = 20.5f;           // Raio do trajeto circular
+float speed = 0.05f;  
+float dx_juba = 0;
+float dy_juba = 0;
+float raio_juba = 30.5f;
+
+
+void update(int value) {
+    angle += speed;
+    if (angle > 2 * M_PI) angle -= 2 * M_PI;
+
+    dx = raio * cos(angle);
+    dy = raio * sin(angle);
+    dx_juba = raio_juba * cos(angle);
+    dy_juba = raio_juba * sin(angle);
+
+    glutPostRedisplay();
+    glutTimerFunc(16, update, 0); // ~60 FPS
+}
+
 int main(int argc, char** argv){
   glutInit(&argc, argv); //Estabelece contato com sistema de janelas
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB); //Cores dos pixels serão expressos em RGB
@@ -51,10 +73,10 @@ int main(int argc, char** argv){
   glClearColor(0, 0, 1, 0.0); //selecionar cor de fundo (Branco)
   glOrtho (0, 475, 475, 0, 0, 1); //define as coordenadas do volume de recorte (clipping volume),
   glutDisplayFunc(display); //Função callback chamada para fazer o desenho
+  glutTimerFunc(0, update, 0); // Começa a animação
   // glutKeyboardFunc(keyboard); //Chamada sempre que uma tecla for precionada
-  // glutSpecialFunc(Special_keyboard); // Registra a função para tratamento das teclas NÂO ASCII
+  glutSpecialFunc(Special_keyboard); // Registra a função para tratamento das teclas NÂO ASCII
   glutKeyboardFunc(Teclado); //Trata eventos de teclado
-  glutSpecialFunc(TeclasEspeciais); //Trata teclas com código não-ascii
   glutMainLoop(); //Depois de registradas as callbacks, o controle é entregue ao sistema de janelas
   printf("\nTestando... \n");
   return 0;
@@ -742,6 +764,9 @@ void juba_cinza(GLfloat dx, GLfloat dy){
   glEnd();
 
 }
+
+float scale = 1.0f; // Current zoom level
+
 void display(void){
   glClear(GL_COLOR_BUFFER_BIT); ////Limpa a janela de visualização com a cor de fundo especificada
   DesenhaTexto("Exemplo de texto para a atividade 2");
@@ -754,6 +779,8 @@ void display(void){
   //glBegin(GL_TRIANGLE_STRIP);
   //glBegin(GL_TRIANGLE_FAN);
 
+  glPushMatrix();
+  glScalef(scale, scale, 1.0f);
   corpo(dx, dy);
   coxa_fundo(dx, dy);
   canela_fundo(dx, dy);
@@ -770,8 +797,8 @@ void display(void){
   asa_dentro(dx, dy);
   orelha_fora(dx, dy);
   asa_fora(dx, dy);
-  juba(dx, dy);
-  juba_cinza(dx, dy);
+  juba(dx_juba, dy_juba);
+  juba_cinza(dx_juba, dy_juba);
   cabeca(dx, dy);
   boca_fora(dx, dy);
   nariz(dx, dy);
@@ -781,6 +808,9 @@ void display(void){
   olho_preto(dx, dy);
   olho_pupila(dx, dy);
   olho_brilho(dx, dy);
+
+  glPopMatrix();
+  glutSwapBuffers();
   glFlush(); ////Executa os comandos OpenGL para renderização
 }
 
@@ -797,7 +827,17 @@ void Special_keyboard(GLint tecla, int x, int y) {
   switch (tecla) { // GLUT_KEY_RIGHT GLUT_KEY_DOWN GLUT_KEY_PAGE_UP GLUT_KEY_PAGE_DOWN GLUT_KEY_F1...
     case GLUT_KEY_F12: R = 0; G = 200; B = 200; glutPostRedisplay(); break;
     case GLUT_KEY_F10: R = 0; G = 100; B = 200; glutPostRedisplay(); break;
+    case GLUT_KEY_PAGE_UP:
+            scale += 0.05f; // Zoom in
+            if (scale > 3.0f) scale = 3.0f;
+            break;
+        case GLUT_KEY_PAGE_DOWN:
+            scale -= 0.05f; // Zoom out
+            if (scale < 0.1f) scale = 0.1f;
+            break;
   }
+  glutPostRedisplay(); // Redraw with new scale
+
 }
 
 void DesenhaTexto(char *string) {
