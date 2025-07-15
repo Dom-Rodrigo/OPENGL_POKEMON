@@ -780,7 +780,9 @@ void display(void){
   //glBegin(GL_TRIANGLE_FAN);
 
   glPushMatrix();
+  glTranslatef(219.58+dx, 218.43+dy, 0); 
   glScalef(scale, scale, 1.0f);
+  glTranslatef(-219.58+dx, -218.43+dy, 0); // Ajusta a escala pro centro do pokemon 
   corpo(dx, dy);
   coxa_fundo(dx, dy);
   canela_fundo(dx, dy);
